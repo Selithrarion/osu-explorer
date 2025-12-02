@@ -1,9 +1,0 @@
-{
-  "name": "backend",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "cargo watch -q -c -x \"run -- serve\"",
-    "build": "cargo build --release"
-  }
-}

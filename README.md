@@ -1,39 +1,41 @@
 # osu!explorer 🦀
 
-finding beatmaps using raw geometry and math. no ai black magic involved
+finding beatmaps using raw geometry and math. no ai black magic involved  
 by [selithrarion](https://osu.ppy.sh/users/4613388)
 
-pp jumps sotarks!!! ([more screenshots below](#more-screenshots)) (https://osu.ppy.sh/beatmapsets/842412#osu/1762728)
+pp jumps sotarks!!! ([more screenshots below](#more-screenshots)) (https://osu.ppy.sh/beatmapsets/842412#osu/1762728)  
 ![jumps](./screenshots/jumps.webp)
-
-**what is this?**
-a local engine that looks at your maps, extracts geometric features (angles, flow, rhythm density), and finds similar ones  
-
-**how it works**
-1. parses `.osu` files
-2. converts hitobjects into float vectors (embeddings)
-3. shoves them into a custom vector db (my prev study project. IN RUST BTW)
-4. uses ivf index (like elastic search) to quickly look for similar maps
-
-**why manual features and not ai transformers?**
-too lazy to train a model. also geometry doesn't hallucinate xd
-
-**does it actually work?**
-kindaaa~~  
-it can definitely distinguish between a 1-2 jump farm and a tech map  
-don't expect miracles!!! but for me it's fun to put my own map and see what's similar to it  
-my osu dream is a pattern/style recommendation system like pinterest, so i (as a mapper) could find inspiration easily  
 
 ---
 
-### usage
+**what is this?**  
+a local engine that looks at your maps, extracts geometric features (angles, flow, rhythm density), and finds similar ones  
+
+**how it works**  
+1. parses `.osu` files
+2. converts hitobjects into float vectors (fingerprint/embeddings)
+3. shoves them into a custom vector db (my prev study project. IN RUST BTW)
+4. uses ivf index (like elastic search) to quickly look for similar maps
+
+**why manual features and not ai transformers?**  
+too lazy to train a model. also geometry doesn't hallucinate xd
+
+**does it actually work?**  
+kindaaa~~  
+it can definitely distinguish between a 1-2 jump farm and a tech map   
+don't expect miracles!!! this is an **MVP built in a 2-day coding sprint** hahaha. it's fun to put my own map and see what the algo thinks is similar to it  
+my osu dream is a pattern/style recommendation system (like pinterest for maps), so mappers could find inspiration easily  
+
+---
+
+## usage
 1. download the release
 2. run it
 3. point it to your `osu!/Songs` folder if it doesn't automatically
 4. hit **Start Indexing** and wait a min
 5. paste a beatmap link/id
 
-### what it sees?
+## what it sees?
 - **tech map:** high overlap, red slider anchors
 - **jump farm:** high circle ratio, triangle angles, low rhythm variance
 - **streams:** high object density
@@ -44,8 +46,9 @@ TODO: consider ar for overlaps
 TODO: slider curvature and slider art feature?    
 TODO: linux build (but does it make sense? maybe only after lazer support)  
 TODO: add lazer support (parse sqlite db?)  
+TODO: add desktop app icon
 
-### more screenshots
+## more screenshots
 streams (https://osu.ppy.sh/beatmapsets/813569#osu/1706210)
 ![streams](./screenshots/streams.webp)
 
@@ -56,12 +59,12 @@ funny that it can't find similar maps to my first ranked in 2023 (didn't pass th
 intended to be used like that but ui is always better
 ![cli](./screenshots/cli.webp)
 
-### dev
+## dev
 if you wanna compile it yourself or add more features:  
 you need `rust`, `nodejs` and `pnpm` (also c++ build tools and webview support for tauri)  
-built with vuejs + rust + tauri  
 
-used `osuparse` crate, thanks!
+**stack:** vuejs + rust + tauri  
+**credits:** used `osuparse` crate, thanks!  
 
 ```bash
 pnpm dev  # run everything
