@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-osu-dark: #1a1920;
+	--color-osu-light: #2e2a36;
+	--color-osu-pink: #ff66aa;
+	--color-osu-header: #3986ac;
+}
+
+@utility flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+body {
+	font-family: 'Inter', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#app,
+main {
+	height: 100%;
+}

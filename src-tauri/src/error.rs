@@ -1,0 +1,11 @@
+use serde::Serialize;
+
+#[derive(Debug, Serialize)]
+#[serde(tag = "type", content = "payload")]
+pub enum AppError {
+    DatabaseNotIndexed,
+    MapNotFound(i32),
+    FeatureExtractionFailed,
+    IoError(String),
+    ConfigError(String),
+}
